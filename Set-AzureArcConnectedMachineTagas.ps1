@@ -1,5 +1,4 @@
 Connect-AzAccount
-
 Set-AzContext XXXXX-XXXXX-XXXX-XXXX-XXXXXXX
 
 Install-Module -Name Az.ConnectedMachine -Force -Verbose
