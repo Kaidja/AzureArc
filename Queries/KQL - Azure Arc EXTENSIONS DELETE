@@ -1,0 +1,1 @@
+AzureActivity | where OperationNameValue == "MICROSOFT.HYBRIDCOMPUTE/MACHINES/EXTENSIONS/DELETE" and ActivitySubstatusValue == "Accepted"
