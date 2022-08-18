@@ -1,0 +1,56 @@
+{
+    "id":  "/subscriptions/XXXXXXXXXXXXXXXXXXXX/resourceGroups/XXXXXXXXXXXXXXXXXXXX/providers/Microsoft.HybridCompute/machines/XXXXXXXXXXXXXXXX",
+    "name":  "XXXXXXXXXXXXXXXXXXXX",
+    "type":  "microsoft.hybridcompute/machines",
+    "tenantId":  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "kind":  "",
+    "location":  "westeurope",
+    "resourceGroup":  "XXXXXXXXXXXXXXXXXX",
+    "subscriptionId":  "XXXXXXXXXXXXXXXXXXXXXXX",
+    "managedBy":  "",
+    "sku":  null,
+    "plan":  null,
+    "properties":  {
+                       "provisioningState":  "Succeeded",
+                       "displayName":  "XXXXXXXXXXXXXXXXXXX",
+                       "osType":  "windows",
+                       "status":  "Disconnected",
+                       "osProfile":  {
+                                         "computerName":  "XXXXXXXXXXXXXXXXXXXXX"
+                                     },
+                       "osVersion":  "10.0.17763.1817",
+                       "osName":  "windows",
+                       "detectedProperties":  {
+                                                  "mssqldiscovered":  "false",
+                                                  "cloudprovider":  "N/A",
+                                                  "manufacturer":  "Microsoft Corporation",
+                                                  "model":  "Virtual Machine"
+                                              },
+                       "vmId":  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                       "lastStatusChange":  "\/Date(1655308796044)\/",
+                       "clientPublicKey":  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                       "mssqlDiscovered":  "false",
+                       "agentVersion":  "1.19.01980.273",
+                       "errorDetails":  [
+
+                                        ],
+                       "machineFqdn":  "XXXXXXXXXXXXXXXXX",
+                       "domainName":  "XXXXXXXXXXXXXXXXX",
+                       "dnsFqdn":  "XXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                       "vmUuid":  "XXXXXXXXXXXXXXXXXXXXXXXXX",
+                       "adFqdn":  "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                       "osSku":  "Windows Server 2019 Standard"
+                   },
+    "tags":  {
+
+             },
+    "identity":  {
+                     "principalId":  "XXXXXXXXXXXXXXXXX",
+                     "tenantId":  "XXXXXXXXXXXXXXXXXXXXXXX",
+                     "type":  "SystemAssigned"
+                 },
+    "zones":  null,
+    "extendedLocation":  null,
+    "ResourceId":  "/subscriptions/XXXXXXXXXXXXXXX/resourceGroups/XXXXXXXXXXXX/providers/Microsoft.HybridCompute/machines/XXXXXXXXXXXXXXXXX
+"
+}
