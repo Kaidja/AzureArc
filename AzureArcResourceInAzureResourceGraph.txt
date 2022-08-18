@@ -51,6 +51,5 @@
                  },
     "zones":  null,
     "extendedLocation":  null,
-    "ResourceId":  "/subscriptions/XXXXXXXXXXXXXXX/resourceGroups/XXXXXXXXXXXX/providers/Microsoft.HybridCompute/machines/XXXXXXXXXXXXXXXXX
-"
+    "ResourceId":  "/subscriptions/XXXXXXXXXXXXXXX/resourceGroups/XXXXXXXXXXXX/providers/Microsoft.HybridCompute/machines/XXXXXXXXXXXXXXXXX"
 }
