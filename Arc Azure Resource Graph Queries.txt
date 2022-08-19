@@ -1,0 +1,9 @@
+resources | where type == "microsoft.hybridcompute/machines"
+| project ServerName = tostring(name)
+| join kind = inner ( resources 
+    | where type == "microsoft.hybridcompute/machines/extensions" 
+    | extend ServerName = tostring(split(tostring(id),"/",8)[0])
+    )
+    on ServerName
+
+
