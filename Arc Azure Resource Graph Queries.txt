@@ -56,4 +56,100 @@ resources | where type == "microsoft.hybridcompute/machines"
     ['List of Extensions']=make_set(Extension)
     by ServerName
 
+resources | where type == "microsoft.hybridcompute/machines"
+| project ServerName = tostring(name)
+| join kind = inner ( resources 
+    | where type == "microsoft.hybridcompute/machines/extensions" 
+    | extend ServerName = tostring(split(tostring(id),"/",8)[0])
+    | extend Extension = name
+    )
+    on ServerName
+| where Extension == "MDE.Windows"
+
+resources | where type == "microsoft.hybridcompute/machines"
+| project ServerName = tostring(name)
+| join kind = inner ( resources 
+    | where type == "microsoft.hybridcompute/machines/extensions" 
+    | extend ServerName = tostring(split(tostring(id),"/",8)[0])
+    | extend Extension = name
+    )
+    on ServerName
+| where Extension == "MicrosoftMonitoringAgent"
+
+
+resources | where type == "microsoft.hybridcompute/machines"
+| project ServerName = tostring(name)
+| join kind = inner ( resources 
+    | where type == "microsoft.hybridcompute/machines/extensions" 
+    | extend ServerName = tostring(split(tostring(id),"/",8)[0])
+    | extend Extension = name
+    )
+    on ServerName
+| where Extension == "AdminCenter"
+
+
+resources | where type == "microsoft.hybridcompute/machines"
+| project ServerName = tostring(name)
+| join kind = inner ( resources 
+    | where type == "microsoft.hybridcompute/machines/extensions" 
+    | extend ServerName = tostring(split(tostring(id),"/",8)[0])
+    | extend Extension = name
+    )
+    on ServerName
+| where Extension == "WindowsOsUpdateExtension"
+
+
+resources | where type == "microsoft.hybridcompute/machines"
+| project ServerName = tostring(name)
+| join kind = inner ( resources 
+    | where type == "microsoft.hybridcompute/machines/extensions" 
+    | extend ServerName = tostring(split(tostring(id),"/",8)[0])
+    | extend Extension = name
+    )
+    on ServerName
+| where Extension == "HybridWorkerExtension"
+
+//List all unqiue Extensions
+resources | where type == "microsoft.hybridcompute/machines"
+| project ServerName = tostring(name)
+| join kind = inner ( resources 
+    | where type == "microsoft.hybridcompute/machines/extensions" 
+    | extend ServerName = tostring(split(tostring(id),"/",8)[0])
+    | extend Extension = name
+    )
+    on ServerName
+| distinct Extension
+
+//List all exentions by version number
+resources | where type == "microsoft.hybridcompute/machines"
+| project ServerName = tostring(name)
+| join kind = inner ( resources 
+    | where type == "microsoft.hybridcompute/machines/extensions" 
+    | extend ServerName = tostring(split(tostring(id),"/",8)[0])
+    | extend Extension = name
+    | extend Version = properties.typeHandlerVersion
+    )
+    on ServerName
+| project ServerName,Extension,Versions
+
+//Count how many different versions of extensions are deployed
+resources | where type == "microsoft.hybridcompute/machines"
+| project ServerName = tostring(name)
+| join kind = inner ( resources 
+    | where type == "microsoft.hybridcompute/machines/extensions" 
+    | extend ServerName = tostring(split(tostring(id),"/",8)[0])
+    | extend Extension = name
+    | extend Version = properties.typeHandlerVersion
+    )
+    on ServerName
+| summarize
+    ['Extensions Count']=dcount(ServerName),
+    ['Extension Versions']=make_set(Version)
+    by Extension
+
+
+
+
+
+
 
