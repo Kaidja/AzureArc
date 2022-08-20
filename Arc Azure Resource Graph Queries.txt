@@ -162,7 +162,30 @@ resources | where type == "microsoft.hybridcompute/machines"
 | where Status == "Failed"
 | project ServerName, Extension,Status,Version
 
+//Count Azure Arc connected nodes OS Type
+resources | where type == "microsoft.hybridcompute/machines"
+| extend OSType = properties.osName
+| project OSType
+| summarize ["Total"] = count() by tostring(OSType)
 
+//List all Azure Arc connected nodes Name,OSversion,OSSku
+resources | where type == "microsoft.hybridcompute/machines"
+| extend ServerName = name
+| extend OSversion = properties.osVersion
+| extend OSSku = properties.osSku
+| project ServerName, OSversion,OSSku
 
+//Get the Azure Arc connected nodes Guest Configuration Services Status
+resources | where type == "microsoft.hybridcompute/machines"
+| extend ServerName = name
+| extend ["Guest Configuration Service Status"] = properties.serviceStatuses.guestConfigurationService.status
+| extend ["Guest Configuration Service Startup Type"] = properties.serviceStatuses.guestConfigurationService.startupType
+| extend ["Extension Service Status"] = properties.serviceStatuses.extensionService.status
+| extend ["Extension Service Startup Type"] = properties.serviceStatuses.extensionService.startupType
+| project ServerName,['Guest Configuration Service Status'],['Guest Configuration Service Startup Type'],['Extension Service Status'],['Extension Service Startup Type']
 
-
+//List Azure Arc connected nodes agent version
+resources | where type == "microsoft.hybridcompute/machines"
+| extend ServerName = name
+| extend ["Agent Version"] = properties.agentVersion
+| project ServerName,['Agent Version']
