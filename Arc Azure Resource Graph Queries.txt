@@ -11,12 +11,6 @@ resources | where type == "microsoft.hybridcompute/machines"
     on ServerName
 
 resources | where type == "microsoft.hybridcompute/machines"
-| where properties.status == "Expired"
-
-resources | where type == "microsoft.hybridcompute/machines"
-| where properties.status == "Disconnected"
-
-resources | where type == "microsoft.hybridcompute/machines"
 | extend ConnectionStatus = properties.status
 | where ConnectionStatus == "Disconnected"
 | project name,ConnectionStatus
