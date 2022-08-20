@@ -15,3 +15,45 @@ resources | where type == "microsoft.hybridcompute/machines"
 
 resources | where type == "microsoft.hybridcompute/machines"
 | where properties.status == "Disconnected"
+
+resources | where type == "microsoft.hybridcompute/machines"
+| extend ConnectionStatus = properties.status
+| where ConnectionStatus == "Disconnected"
+| project name,ConnectionStatus
+
+resources | where type == "microsoft.hybridcompute/machines"
+| extend ConnectionStatus = properties.status
+| where ConnectionStatus == "Connected"
+| project name,ConnectionStatus
+
+resources | where type == "microsoft.hybridcompute/machines"
+| extend ConnectionStatus = properties.status
+| where ConnectionStatus == "Expired"
+| project name,ConnectionStatus
+
+//Summarize by Extension name
+resources | where type == "microsoft.hybridcompute/machines"
+| project ServerName = tostring(name)
+| join kind = inner ( resources 
+    | where type == "microsoft.hybridcompute/machines/extensions" 
+    | extend ServerName = tostring(split(tostring(id),"/",8)[0])
+    | extend Extension = name
+    )
+    on ServerName
+| summarize Servers=make_set(ServerName) by ['Extension']
+
+//Count extensions per server, group extensions and summarize by ServerName
+resources | where type == "microsoft.hybridcompute/machines"
+| project ServerName = tostring(name)
+| join kind = inner ( resources 
+    | where type == "microsoft.hybridcompute/machines/extensions" 
+    | extend ServerName = tostring(split(tostring(id),"/",8)[0])
+    | extend Extension = name
+    )
+    on ServerName
+| summarize
+    ['Extensions Count']=dcount(Extension),
+    ['List of Extensions']=make_set(Extension)
+    by ServerName
+
+
