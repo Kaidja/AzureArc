@@ -189,3 +189,12 @@ resources | where type == "microsoft.hybridcompute/machines"
 | extend ServerName = name
 | extend ["Agent Version"] = properties.agentVersion
 | project ServerName,['Agent Version']
+
+//Get the Last Status Change and calculate how many days offline.
+resources | where type == "microsoft.hybridcompute/machines"
+| extend  ServerName = tostring(name)
+| extend  ["Last Status Change"] = format_datetime(make_datetime(properties.lastStatusChange),'d.MM.yyyy HH:ss')
+| extend ["Days Offline"] = datetime_diff('day',now(),make_datetime(properties.lastStatusChange))
+| extend ["Requires Administrator to FIX"] = iif(['Days Offline'] > 45, "If a machine remains disconnected for 45 days, its status may change to Expired. An expired machine can no longer connect to Azure and requires a server administrator to disconnect and then reconnect it to Azure to continue managing it with Azure Arc","All OK")
+| project ServerName,['Last Status Change'],['Days Offline'],['Requires Administrator to FIX']
+| order by ['Requires Administrator to FIX'] asc
