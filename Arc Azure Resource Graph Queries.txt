@@ -169,6 +169,15 @@ resources | where type == "microsoft.hybridcompute/machines"
 | extend OSSku = properties.osSku
 | project ServerName, OSversion,OSSku
 
+//Count OS versions
+resources | where type == "microsoft.hybridcompute/machines"
+| extend ServerName = name
+| extend OSversion = properties.osVersion
+| extend ["Operating System Edition"] = properties.osSku
+| summarize
+    ['Count']=dcount(tostring(["OSversion"]))
+    by tostring(["Operating System Edition"])
+    
 //Get the Azure Arc connected nodes Guest Configuration Services Status
 resources | where type == "microsoft.hybridcompute/machines"
 | extend ServerName = name
