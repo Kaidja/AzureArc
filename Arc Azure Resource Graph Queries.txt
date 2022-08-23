@@ -184,6 +184,14 @@ resources | where type == "microsoft.hybridcompute/machines"
 | extend ["Agent Version"] = properties.agentVersion
 | project ServerName,['Agent Version']
 
+resources | where type == "microsoft.hybridcompute/machines"
+| extend ServerName = name
+| extend ["Agent Version"] = properties.agentVersion
+//| project ServerName,['Agent Version']
+| summarize
+    ['Count']=count(tostring(["Agent Version"]))
+    by tostring(["Agent Version"])
+    
 //Get the Last Status Change and calculate how many days offline.
 resources | where type == "microsoft.hybridcompute/machines"
 | extend  ServerName = tostring(name)
