@@ -208,7 +208,28 @@ resources | where type == "microsoft.hybridcompute/machines"
 | summarize
     ['Count']=count(tostring(["Agent Version"]))
     by tostring(["Agent Version"])
-    
+
+// Original query from here but modified - https://docs.microsoft.com/en-us/azure/governance/resource-graph/samples/samples-by-category?tabs=azure-cli#list-arc-enabled-servers-not-running-latest-released-agent-version
+AdvisorResources
+| where type == 'microsoft.advisor/recommendations'
+| where properties.category == 'HighAvailability'
+| where properties.shortDescription.solution == 'Upgrade to the latest version of the Azure Connected Machine agent'
+| project
+		id,
+		JoinId = toupper(properties.resourceMetadata.resourceId),
+		["Server Name"] = tostring(properties.impactedValue),
+		["Current Agent Version"] = tostring(properties.extendedProperties.installedVersion),
+		["Expected Agent Version"] = tostring(properties.extendedProperties.latestVersion)
+| join kind=leftouter(
+	Resources
+	| where type == 'microsoft.hybridcompute/machines'
+	| project
+		machineId = toupper(id),
+		status = tostring (properties.status)
+	) on $left.JoinId == $right.machineId
+| where status != 'Expired'
+| summarize by ["Server Name"], ["Current Agent Version"], ["Expected Agent Version"]
+
 //Get the Last Status Change and calculate how many days offline.
 resources | where type == "microsoft.hybridcompute/machines"
 | extend  ServerName = tostring(name)
