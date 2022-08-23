@@ -162,6 +162,14 @@ resources | where type == "microsoft.hybridcompute/machines"
 | project OSType
 | summarize ["Total"] = count() by tostring(OSType)
 
+resources | where type == "microsoft.hybridcompute/machines"
+| extend OSType = case(
+properties.osType =~ 'windows', 'Windows',
+properties.osType =~ 'linux', 'Linux',
+'')
+| project OSType
+| summarize ["Total"] = count() by tostring(OSType)
+
 //List all Azure Arc connected nodes Name,OSversion,OSSku
 resources | where type == "microsoft.hybridcompute/machines"
 | extend ServerName = name
