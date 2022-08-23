@@ -1,0 +1,823 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 1,
+      "content": {
+        "json": "# Azure Arc is KING Workbook\n---"
+      },
+      "name": "text - 2"
+    },
+    {
+      "type": 11,
+      "content": {
+        "version": "LinkItem/1.0",
+        "style": "tabs",
+        "links": [
+          {
+            "id": "2d386dfb-5c76-4e8d-b2b3-2d1b68345071",
+            "cellValue": "WorkbookPage",
+            "linkTarget": "parameter",
+            "linkLabel": "Main Dashboard",
+            "subTarget": "MainDashboard",
+            "style": "link"
+          },
+          {
+            "id": "88f99ada-dce5-4a34-a5d5-393d6a194207",
+            "cellValue": "WorkbookPage",
+            "linkTarget": "parameter",
+            "linkLabel": "Extensions Dashboard",
+            "subTarget": "ExtensionsDashboard",
+            "style": "link"
+          },
+          {
+            "id": "df3f7459-9298-4e3b-9e76-6183cba087a2",
+            "cellValue": "WorkbookPage",
+            "linkTarget": "parameter",
+            "linkLabel": "Guest Configuration Services",
+            "subTarget": "QuestConfigDashboard",
+            "style": "link"
+          },
+          {
+            "id": "311a2c13-f148-471f-83bf-971442443c28",
+            "cellValue": "WorkbookPage",
+            "linkTarget": "parameter",
+            "linkLabel": "Recommendations",
+            "subTarget": "RecommendationsDashboard",
+            "style": "link"
+          }
+        ]
+      },
+      "name": "links - 2"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "resources | where type == \"microsoft.hybridcompute/machines\"\r\n| extend [\"Server Name\"] = name\r\n| extend [\"Resource Group\"] = resourceGroup\r\n| extend [\"Connection Status\"] = properties.status\r\n| extend [\"Operating System\"] = case(\r\nproperties.osType =~ 'windows', 'Windows',\r\nproperties.osType =~ 'linux', 'Linux',\r\n'')\r\n| extend [\"Agent Version\"] = properties.agentVersion\r\n| extend [\"Operating System Edition\"] = properties.osSku\r\n| extend [\"Operating System Version\"] = properties.osVersion\r\n| extend [\"Last Status Change\"] = format_datetime(make_datetime(properties.lastStatusChange),'d.MM.yyyy HH:ss')\r\n| extend [\"Days Offline\"] = datetime_diff('day',now(),make_datetime(properties.lastStatusChange))\r\n| project [\"Server Name\"], [\"Connection Status\"], [\"Last Status Change\"], [\"Days Offline\"], [\"Agent Version\"], [\"Operating System\"], [\"Operating System Edition\"], [\"Operating System Version\"], [\"Resource Group\"]",
+        "size": 1,
+        "queryType": 1,
+        "resourceType": "microsoft.resourcegraph/resources",
+        "gridSettings": {
+          "formatters": [
+            {
+              "columnMatch": "Status",
+              "formatter": 18,
+              "formatOptions": {
+                "thresholdsOptions": "icons",
+                "thresholdsGrid": [
+                  {
+                    "operator": "==",
+                    "thresholdValue": "Expired",
+                    "representation": "3",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "Disconnected",
+                    "representation": "2",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "==",
+                    "thresholdValue": "Connected",
+                    "representation": "success",
+                    "text": "{0}{1}"
+                  },
+                  {
+                    "operator": "Default",
+                    "thresholdValue": null,
+                    "representation": "warning",
+                    "text": "{0}{1}"
+                  }
+                ]
+              }
+            },
+            {
+              "columnMatch": "Last Status Change",
+              "formatter": 1
+            },
+            {
+              "columnMatch": "Days Offline",
+              "formatter": 8,
+              "formatOptions": {
+                "palette": "redDark"
+              }
+            },
+            {
+              "columnMatch": "Agent Version",
+              "formatter": 1
+            }
+          ],
+          "sortBy": [
+            {
+              "itemKey": "$gen_thresholds_Status_1",
+              "sortOrder": 1
+            }
+          ]
+        },
+        "sortBy": [
+          {
+            "itemKey": "$gen_thresholds_Status_1",
+            "sortOrder": 1
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "MainDashboard"
+      },
+      "name": "query - 2"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### Agent Versions"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "resources | where type == \"microsoft.hybridcompute/machines\"\r\n| extend ServerName = name\r\n| extend [\"Agent Version\"] = properties.agentVersion\r\n//| project ServerName,['Agent Version']\r\n| summarize\r\n    ['Count']=count(tostring([\"Agent Version\"]))\r\n    by tostring([\"Agent Version\"])",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources",
+              "visualization": "piechart"
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "MainDashboard"
+      },
+      "customWidth": "50",
+      "name": "group - 3",
+      "styleSettings": {
+        "maxWidth": "50"
+      }
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### Operating Systems"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "resources | where type == \"microsoft.hybridcompute/machines\"\r\n| extend ServerName = name\r\n| extend OSversion = properties.osVersion\r\n| extend [\"Operating System Edition\"] = properties.osSku\r\n| summarize\r\n    ['Count']=count(tostring([\"OSversion\"]))\r\n    by tostring([\"Operating System Edition\"])",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources",
+              "visualization": "piechart"
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "MainDashboard"
+      },
+      "customWidth": "50",
+      "name": "group - 4",
+      "styleSettings": {
+        "maxWidth": "50"
+      }
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### Agent types"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "resources | where type == \"microsoft.hybridcompute/machines\"\r\n| extend OSType = case(\r\nproperties.osType =~ 'windows', 'Windows',\r\nproperties.osType =~ 'linux', 'Linux',\r\n'')\r\n| project OSType\r\n| summarize [\"Total\"] = count() by tostring(OSType)",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources",
+              "visualization": "tiles",
+              "tileSettings": {
+                "showBorder": false,
+                "titleContent": {
+                  "columnMatch": "OSType",
+                  "formatter": 1
+                },
+                "leftContent": {
+                  "columnMatch": "Total",
+                  "formatter": 12,
+                  "formatOptions": {
+                    "palette": "auto"
+                  },
+                  "numberFormat": {
+                    "unit": 17,
+                    "options": {
+                      "maximumSignificantDigits": 3,
+                      "maximumFractionDigits": 2
+                    }
+                  }
+                }
+              },
+              "graphSettings": {
+                "type": 0,
+                "topContent": {
+                  "columnMatch": "OSType",
+                  "formatter": 1
+                },
+                "centerContent": {
+                  "columnMatch": "Total",
+                  "formatter": 1,
+                  "numberFormat": {
+                    "unit": 17,
+                    "options": {
+                      "maximumSignificantDigits": 3,
+                      "maximumFractionDigits": 2
+                    }
+                  }
+                }
+              }
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "MainDashboard"
+      },
+      "customWidth": "50",
+      "name": "group - 5",
+      "styleSettings": {
+        "maxWidth": "50"
+      }
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### Current Agent Connection Statuses"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "resources | where type == \"microsoft.hybridcompute/machines\"\r\n| extend [\"Connection Status\"] = properties.status\r\n| summarize\r\n    ['Count']=count([\"Connection Status\"])\r\n    by tostring([\"Connection Status\"])",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources",
+              "visualization": "piechart"
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "MainDashboard"
+      },
+      "customWidth": "50",
+      "name": "group - 6",
+      "styleSettings": {
+        "maxWidth": "50"
+      }
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### Guest Configuration Services Status on Servers\r\nIf you dont see any statuses, then your server Azure Arc agent may be too old."
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "resources | where type == \"microsoft.hybridcompute/machines\"\r\n| extend [\"Server Name\"] = name\r\n| extend [\"Guest Configuration Service Status\"] = properties.serviceStatuses.guestConfigurationService.status\r\n| extend [\"Guest Configuration Service Startup Type\"] = properties.serviceStatuses.guestConfigurationService.startupType\r\n| extend [\"Extension Service Status\"] = properties.serviceStatuses.extensionService.status\r\n| extend [\"Extension Service Startup Type\"] = properties.serviceStatuses.extensionService.startupType\r\n| project [\"Server Name\"],['Guest Configuration Service Status'],['Guest Configuration Service Startup Type'],['Extension Service Status'],['Extension Service Startup Type']",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Guest Configuration Service Status",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "icons",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "running",
+                          "representation": "success",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "stopped",
+                          "representation": "3",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "representation": "more",
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "Guest Configuration Service Startup Type",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "icons",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "automatic",
+                          "representation": "success",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "representation": "more",
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "Extension Service Status",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "icons",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "running",
+                          "representation": "success",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "==",
+                          "thresholdValue": "stopped",
+                          "representation": "3",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "representation": "more",
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "columnMatch": "Extension Service Startup Type",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "icons",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "automatic",
+                          "representation": "success",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "representation": "more",
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "QuestConfigDashboard"
+      },
+      "name": "group - 7",
+      "styleSettings": {
+        "showBorder": true
+      }
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### Azure Arc Agents that needs to be updated"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "AdvisorResources\r\n| where type == 'microsoft.advisor/recommendations'\r\n| where properties.category == 'HighAvailability'\r\n| where properties.shortDescription.solution == 'Upgrade to the latest version of the Azure Connected Machine agent'\r\n| project\r\n\t\tid,\r\n\t\tJoinId = toupper(properties.resourceMetadata.resourceId),\r\n\t\t[\"Server Name\"] = tostring(properties.impactedValue),\r\n\t\t[\"Current Agent Version\"] = tostring(properties.extendedProperties.installedVersion),\r\n\t\t[\"Expected Agent Version\"] = tostring(properties.extendedProperties.latestVersion)\r\n| join kind=leftouter(\r\n\tResources\r\n\t| where type == 'microsoft.hybridcompute/machines'\r\n\t| project\r\n\t\tmachineId = toupper(id),\r\n\t\tstatus = tostring (properties.status)\r\n\t) on $left.JoinId == $right.machineId\r\n| where status != 'Expired'\r\n| summarize by [\"Server Name\"], [\"Current Agent Version\"], [\"Expected Agent Version\"]",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources"
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "RecommendationsDashboard"
+      },
+      "name": "group - 8",
+      "styleSettings": {
+        "showBorder": true
+      }
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### Servers that have been offline 45 days or more\r\nIf a machine remains disconnected for 45 days, its status may change to Expired. An expired machine can no longer connect to Azure and requires a server administrator to disconnect and then reconnect it to Azure to continue managing it with Azure Arc"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "resources | where type == \"microsoft.hybridcompute/machines\"\r\n| extend  ServerName = tostring(name)\r\n| extend  [\"Last Status Change\"] = format_datetime(make_datetime(properties.lastStatusChange),'d.MM.yyyy HH:ss')\r\n| extend [\"Days Offline\"] = datetime_diff('day',now(),make_datetime(properties.lastStatusChange))\r\n| extend [\"Requires Administrator to FIX\"] = iif(['Days Offline'] > 45, \"Please consult with the service owner.\",\"All OK\")\r\n| where [\"Days Offline\"] >= 45\r\n| project ServerName,['Last Status Change'],['Days Offline'],['Requires Administrator to FIX']",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources"
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "RecommendationsDashboard"
+      },
+      "name": "group - 9",
+      "styleSettings": {
+        "showBorder": true
+      }
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### Expired Azure Arc Connected Nodes"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "resources | where type == \"microsoft.hybridcompute/machines\"\r\n| extend [\"Connection Status\"] = properties.status\r\n| extend [\"Server Name\"] = name\r\n| where [\"Connection Status\"] == \"Expired\"\r\n| project [\"Server Name\"],[\"Connection Status\"]",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources"
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "RecommendationsDashboard"
+      },
+      "customWidth": "50",
+      "name": "group - 10",
+      "styleSettings": {
+        "maxWidth": "50",
+        "showBorder": true
+      }
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### Disconnected Azure Arc Connected Nodes"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "resources | where type == \"microsoft.hybridcompute/machines\"\r\n| extend [\"Connection Status\"] = properties.status\r\n| extend [\"Server Name\"] = name\r\n| where [\"Connection Status\"] == \"Disconnected\"\r\n| project [\"Server Name\"],[\"Connection Status\"]",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources",
+              "gridSettings": {
+                "formatters": [
+                  {
+                    "columnMatch": "Connection Status",
+                    "formatter": 18,
+                    "formatOptions": {
+                      "thresholdsOptions": "icons",
+                      "thresholdsGrid": [
+                        {
+                          "operator": "==",
+                          "thresholdValue": "Disconnected",
+                          "representation": "2",
+                          "text": "{0}{1}"
+                        },
+                        {
+                          "operator": "Default",
+                          "thresholdValue": null,
+                          "representation": "success",
+                          "text": "{0}{1}"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "RecommendationsDashboard"
+      },
+      "customWidth": "50",
+      "name": "group - 11",
+      "styleSettings": {
+        "maxWidth": "50",
+        "showBorder": true
+      }
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### Extensions per server"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "//Count extensions per server, group extensions and summarize by ServerName\r\nresources | where type == \"microsoft.hybridcompute/machines\"\r\n| project ServerName = tostring(name)\r\n| join kind = inner ( resources \r\n    | where type == \"microsoft.hybridcompute/machines/extensions\" \r\n    | extend ServerName = tostring(split(tostring(id),\"/\",8)[0])\r\n    | extend Extension = name\r\n    )\r\n    on ServerName\r\n| summarize\r\n    ['Extensions Count']=dcount(Extension),\r\n    ['List of Extensions']=make_set(Extension)\r\n    by ServerName",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources"
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "ExtensionsDashboard"
+      },
+      "name": "group - 12",
+      "styleSettings": {
+        "showBorder": true
+      }
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### All deployed extensions"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "//List all exentions by version number\r\nresources | where type == \"microsoft.hybridcompute/machines\"\r\n| project [\"Server Name\"] = tostring(name)\r\n| join kind = inner ( resources \r\n    | where type == \"microsoft.hybridcompute/machines/extensions\" \r\n    | extend [\"Server Name\"] = tostring(split(tostring(id),\"/\",8)[0])\r\n    | extend Extension = name\r\n    | extend Version = properties.typeHandlerVersion\r\n    )\r\n    on [\"Server Name\"]\r\n| project [\"Server Name\"],Extension,Version",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources"
+            },
+            "name": "query - 1",
+            "styleSettings": {
+              "showBorder": true
+            }
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "ExtensionsDashboard"
+      },
+      "name": "group - 13"
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### Deployed extension versions"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "//Count how many different versions of extensions are deployed\r\nresources | where type == \"microsoft.hybridcompute/machines\"\r\n| project ServerName = tostring(name)\r\n| join kind = inner ( resources \r\n    | where type == \"microsoft.hybridcompute/machines/extensions\" \r\n    | extend ServerName = tostring(split(tostring(id),\"/\",8)[0])\r\n    | extend Extension = name\r\n    | extend Version = properties.typeHandlerVersion\r\n    )\r\n    on ServerName\r\n| summarize\r\n    ['Extensions Count']=dcount(ServerName),\r\n    ['Extension Versions']=make_set(Version)\r\n    by Extension",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources"
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "ExtensionsDashboard"
+      },
+      "name": "group - 14",
+      "styleSettings": {
+        "showBorder": true
+      }
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### Failed extensions"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "//Get all failed extensions\r\nresources | where type == \"microsoft.hybridcompute/machines\"\r\n| project [\"Server Name\"] = tostring(name)\r\n| join kind = inner ( resources \r\n    | where type == \"microsoft.hybridcompute/machines/extensions\" \r\n    | extend [\"Server Name\"] = tostring(split(tostring(id),\"/\",8)[0])\r\n    | extend Extension = name\r\n    | extend Version = properties.typeHandlerVersion\r\n    | extend Status = properties.provisioningState\r\n    )\r\n    on [\"Server Name\"]\r\n| where Status == \"Failed\"\r\n| project [\"Server Name\"], Extension,Status,Version",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources"
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "ExtensionsDashboard"
+      },
+      "customWidth": "50",
+      "name": "group - 15",
+      "styleSettings": {
+        "maxWidth": "50",
+        "showBorder": true
+      }
+    },
+    {
+      "type": 12,
+      "content": {
+        "version": "NotebookGroup/1.0",
+        "groupType": "editable",
+        "items": [
+          {
+            "type": 1,
+            "content": {
+              "json": "### How many different extensions deployed"
+            },
+            "name": "text - 0"
+          },
+          {
+            "type": 3,
+            "content": {
+              "version": "KqlItem/1.0",
+              "query": "resources | where type == \"microsoft.hybridcompute/machines\"\r\n| project [\"Server Name\"] = tostring(name)\r\n| join kind = inner ( resources \r\n    | where type == \"microsoft.hybridcompute/machines/extensions\" \r\n    | extend [\"Server Name\"] = tostring(split(tostring(id),\"/\",8)[0])\r\n    | extend Extension = name\r\n    )\r\n    on [\"Server Name\"]\r\n| distinct Extension",
+              "size": 0,
+              "queryType": 1,
+              "resourceType": "microsoft.resourcegraph/resources"
+            },
+            "name": "query - 1"
+          }
+        ]
+      },
+      "conditionalVisibility": {
+        "parameterName": "WorkbookPage",
+        "comparison": "isEqualTo",
+        "value": "ExtensionsDashboard"
+      },
+      "customWidth": "50",
+      "name": "group - 16",
+      "styleSettings": {
+        "maxWidth": "50",
+        "showBorder": true
+      }
+    }
+  ],
+  "fallbackResourceIds": [
+    "/subscriptions/611f9300-294c-4854-926b-8aff119850d2/resourcegroups/prod-it-az-security-mgmt-we/providers/microsoft.operationalinsights/workspaces/prod-it-log-analytics-we"
+  ],
+  "fromTemplateId": "sentinel-UserWorkbook",
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}
