@@ -1,0 +1,362 @@
+[
+    {
+        "MaintenanceDate":  "2024-01-08",
+        "Month":  1,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-1-2024-OFFSET-1",
+        "StartDate":  "2024-01-08",
+        "PatchTuesday":  "2024-01-09",
+        "OffsetDays":  -1,
+        "RecurEvery":  "Month Second Tuesday Offset-1"
+    },
+    {
+        "MaintenanceDate":  "2024-01-10",
+        "Month":  1,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-1-2024-OFFSET1",
+        "StartDate":  "2024-01-10",
+        "PatchTuesday":  "2024-01-09",
+        "OffsetDays":  1,
+        "RecurEvery":  "Month Second Tuesday Offset1"
+    },
+    {
+        "MaintenanceDate":  "2024-01-11",
+        "Month":  1,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-1-2024-OFFSET2",
+        "StartDate":  "2024-01-11",
+        "PatchTuesday":  "2024-01-09",
+        "OffsetDays":  2,
+        "RecurEvery":  "Month Second Tuesday Offset2"
+    },
+    {
+        "MaintenanceDate":  "2024-02-12",
+        "Month":  2,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-2-2024-OFFSET-1",
+        "StartDate":  "2024-02-12",
+        "PatchTuesday":  "2024-02-13",
+        "OffsetDays":  -1,
+        "RecurEvery":  "Month Second Tuesday Offset-1"
+    },
+    {
+        "MaintenanceDate":  "2024-02-14",
+        "Month":  2,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-2-2024-OFFSET1",
+        "StartDate":  "2024-02-14",
+        "PatchTuesday":  "2024-02-13",
+        "OffsetDays":  1,
+        "RecurEvery":  "Month Second Tuesday Offset1"
+    },
+    {
+        "MaintenanceDate":  "2024-02-15",
+        "Month":  2,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-2-2024-OFFSET2",
+        "StartDate":  "2024-02-15",
+        "PatchTuesday":  "2024-02-13",
+        "OffsetDays":  2,
+        "RecurEvery":  "Month Second Tuesday Offset2"
+    },
+    {
+        "MaintenanceDate":  "2024-03-11",
+        "Month":  3,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-3-2024-OFFSET-1",
+        "StartDate":  "2024-03-11",
+        "PatchTuesday":  "2024-03-12",
+        "OffsetDays":  -1,
+        "RecurEvery":  "Month Second Tuesday Offset-1"
+    },
+    {
+        "MaintenanceDate":  "2024-03-13",
+        "Month":  3,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-3-2024-OFFSET1",
+        "StartDate":  "2024-03-13",
+        "PatchTuesday":  "2024-03-12",
+        "OffsetDays":  1,
+        "RecurEvery":  "Month Second Tuesday Offset1"
+    },
+    {
+        "MaintenanceDate":  "2024-03-14",
+        "Month":  3,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-3-2024-OFFSET2",
+        "StartDate":  "2024-03-14",
+        "PatchTuesday":  "2024-03-12",
+        "OffsetDays":  2,
+        "RecurEvery":  "Month Second Tuesday Offset2"
+    },
+    {
+        "MaintenanceDate":  "2024-04-08",
+        "Month":  4,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-4-2024-OFFSET-1",
+        "StartDate":  "2024-04-08",
+        "PatchTuesday":  "2024-04-09",
+        "OffsetDays":  -1,
+        "RecurEvery":  "Month Second Tuesday Offset-1"
+    },
+    {
+        "MaintenanceDate":  "2024-04-10",
+        "Month":  4,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-4-2024-OFFSET1",
+        "StartDate":  "2024-04-10",
+        "PatchTuesday":  "2024-04-09",
+        "OffsetDays":  1,
+        "RecurEvery":  "Month Second Tuesday Offset1"
+    },
+    {
+        "MaintenanceDate":  "2024-04-11",
+        "Month":  4,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-4-2024-OFFSET2",
+        "StartDate":  "2024-04-11",
+        "PatchTuesday":  "2024-04-09",
+        "OffsetDays":  2,
+        "RecurEvery":  "Month Second Tuesday Offset2"
+    },
+    {
+        "MaintenanceDate":  "2024-05-13",
+        "Month":  5,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-5-2024-OFFSET-1",
+        "StartDate":  "2024-05-13",
+        "PatchTuesday":  "2024-05-14",
+        "OffsetDays":  -1,
+        "RecurEvery":  "Month Second Tuesday Offset-1"
+    },
+    {
+        "MaintenanceDate":  "2024-05-15",
+        "Month":  5,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-5-2024-OFFSET1",
+        "StartDate":  "2024-05-15",
+        "PatchTuesday":  "2024-05-14",
+        "OffsetDays":  1,
+        "RecurEvery":  "Month Second Tuesday Offset1"
+    },
+    {
+        "MaintenanceDate":  "2024-05-16",
+        "Month":  5,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-5-2024-OFFSET2",
+        "StartDate":  "2024-05-16",
+        "PatchTuesday":  "2024-05-14",
+        "OffsetDays":  2,
+        "RecurEvery":  "Month Second Tuesday Offset2"
+    },
+    {
+        "MaintenanceDate":  "2024-06-10",
+        "Month":  6,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-6-2024-OFFSET-1",
+        "StartDate":  "2024-06-10",
+        "PatchTuesday":  "2024-06-11",
+        "OffsetDays":  -1,
+        "RecurEvery":  "Month Second Tuesday Offset-1"
+    },
+    {
+        "MaintenanceDate":  "2024-06-12",
+        "Month":  6,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-6-2024-OFFSET1",
+        "StartDate":  "2024-06-12",
+        "PatchTuesday":  "2024-06-11",
+        "OffsetDays":  1,
+        "RecurEvery":  "Month Second Tuesday Offset1"
+    },
+    {
+        "MaintenanceDate":  "2024-06-13",
+        "Month":  6,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-6-2024-OFFSET2",
+        "StartDate":  "2024-06-13",
+        "PatchTuesday":  "2024-06-11",
+        "OffsetDays":  2,
+        "RecurEvery":  "Month Second Tuesday Offset2"
+    },
+    {
+        "MaintenanceDate":  "2024-07-08",
+        "Month":  7,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-7-2024-OFFSET-1",
+        "StartDate":  "2024-07-08",
+        "PatchTuesday":  "2024-07-09",
+        "OffsetDays":  -1,
+        "RecurEvery":  "Month Second Tuesday Offset-1"
+    },
+    {
+        "MaintenanceDate":  "2024-07-10",
+        "Month":  7,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-7-2024-OFFSET1",
+        "StartDate":  "2024-07-10",
+        "PatchTuesday":  "2024-07-09",
+        "OffsetDays":  1,
+        "RecurEvery":  "Month Second Tuesday Offset1"
+    },
+    {
+        "MaintenanceDate":  "2024-07-11",
+        "Month":  7,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-7-2024-OFFSET2",
+        "StartDate":  "2024-07-11",
+        "PatchTuesday":  "2024-07-09",
+        "OffsetDays":  2,
+        "RecurEvery":  "Month Second Tuesday Offset2"
+    },
+    {
+        "MaintenanceDate":  "2024-08-12",
+        "Month":  8,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-8-2024-OFFSET-1",
+        "StartDate":  "2024-08-12",
+        "PatchTuesday":  "2024-08-13",
+        "OffsetDays":  -1,
+        "RecurEvery":  "Month Second Tuesday Offset-1"
+    },
+    {
+        "MaintenanceDate":  "2024-08-14",
+        "Month":  8,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-8-2024-OFFSET1",
+        "StartDate":  "2024-08-14",
+        "PatchTuesday":  "2024-08-13",
+        "OffsetDays":  1,
+        "RecurEvery":  "Month Second Tuesday Offset1"
+    },
+    {
+        "MaintenanceDate":  "2024-08-15",
+        "Month":  8,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-8-2024-OFFSET2",
+        "StartDate":  "2024-08-15",
+        "PatchTuesday":  "2024-08-13",
+        "OffsetDays":  2,
+        "RecurEvery":  "Month Second Tuesday Offset2"
+    },
+    {
+        "MaintenanceDate":  "2024-09-09",
+        "Month":  9,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-9-2024-OFFSET-1",
+        "StartDate":  "2024-09-09",
+        "PatchTuesday":  "2024-09-10",
+        "OffsetDays":  -1,
+        "RecurEvery":  "Month Second Tuesday Offset-1"
+    },
+    {
+        "MaintenanceDate":  "2024-09-11",
+        "Month":  9,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-9-2024-OFFSET1",
+        "StartDate":  "2024-09-11",
+        "PatchTuesday":  "2024-09-10",
+        "OffsetDays":  1,
+        "RecurEvery":  "Month Second Tuesday Offset1"
+    },
+    {
+        "MaintenanceDate":  "2024-09-12",
+        "Month":  9,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-9-2024-OFFSET2",
+        "StartDate":  "2024-09-12",
+        "PatchTuesday":  "2024-09-10",
+        "OffsetDays":  2,
+        "RecurEvery":  "Month Second Tuesday Offset2"
+    },
+    {
+        "MaintenanceDate":  "2024-10-07",
+        "Month":  10,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-10-2024-OFFSET-1",
+        "StartDate":  "2024-10-07",
+        "PatchTuesday":  "2024-10-08",
+        "OffsetDays":  -1,
+        "RecurEvery":  "Month Second Tuesday Offset-1"
+    },
+    {
+        "MaintenanceDate":  "2024-10-09",
+        "Month":  10,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-10-2024-OFFSET1",
+        "StartDate":  "2024-10-09",
+        "PatchTuesday":  "2024-10-08",
+        "OffsetDays":  1,
+        "RecurEvery":  "Month Second Tuesday Offset1"
+    },
+    {
+        "MaintenanceDate":  "2024-10-10",
+        "Month":  10,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-10-2024-OFFSET2",
+        "StartDate":  "2024-10-10",
+        "PatchTuesday":  "2024-10-08",
+        "OffsetDays":  2,
+        "RecurEvery":  "Month Second Tuesday Offset2"
+    },
+    {
+        "MaintenanceDate":  "2024-11-11",
+        "Month":  11,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-11-2024-OFFSET-1",
+        "StartDate":  "2024-11-11",
+        "PatchTuesday":  "2024-11-12",
+        "OffsetDays":  -1,
+        "RecurEvery":  "Month Second Tuesday Offset-1"
+    },
+    {
+        "MaintenanceDate":  "2024-11-13",
+        "Month":  11,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-11-2024-OFFSET1",
+        "StartDate":  "2024-11-13",
+        "PatchTuesday":  "2024-11-12",
+        "OffsetDays":  1,
+        "RecurEvery":  "Month Second Tuesday Offset1"
+    },
+    {
+        "MaintenanceDate":  "2024-11-14",
+        "Month":  11,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-11-2024-OFFSET2",
+        "StartDate":  "2024-11-14",
+        "PatchTuesday":  "2024-11-12",
+        "OffsetDays":  2,
+        "RecurEvery":  "Month Second Tuesday Offset2"
+    },
+    {
+        "MaintenanceDate":  "2024-12-09",
+        "Month":  12,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-12-2024-OFFSET-1",
+        "StartDate":  "2024-12-09",
+        "PatchTuesday":  "2024-12-10",
+        "OffsetDays":  -1,
+        "RecurEvery":  "Month Second Tuesday Offset-1"
+    },
+    {
+        "MaintenanceDate":  "2024-12-11",
+        "Month":  12,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-12-2024-OFFSET1",
+        "StartDate":  "2024-12-11",
+        "PatchTuesday":  "2024-12-10",
+        "OffsetDays":  1,
+        "RecurEvery":  "Month Second Tuesday Offset1"
+    },
+    {
+        "MaintenanceDate":  "2024-12-12",
+        "Month":  12,
+        "Year":  2024,
+        "Name":  "MW-PATCHTUESDAY-12-2024-OFFSET2",
+        "StartDate":  "2024-12-12",
+        "PatchTuesday":  "2024-12-10",
+        "OffsetDays":  2,
+        "RecurEvery":  "Month Second Tuesday Offset2"
+    }
+]
