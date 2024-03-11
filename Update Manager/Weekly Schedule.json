@@ -1,0 +1,114 @@
+[
+    {
+        "RecurEvery":  "1Week Sunday",
+        "Description":  "Occurs every 1 week(s) on Sunday"
+    },
+    {
+        "RecurEvery":  "1Week Monday",
+        "Description":  "Occurs every 1 week(s) on Monday"
+    },
+    {
+        "RecurEvery":  "1Week Tuesday",
+        "Description":  "Occurs every 1 week(s) on Tuesday"
+    },
+    {
+        "RecurEvery":  "1Week Wednesday",
+        "Description":  "Occurs every 1 week(s) on Wednesday"
+    },
+    {
+        "RecurEvery":  "1Week Thursday",
+        "Description":  "Occurs every 1 week(s) on Thursday"
+    },
+    {
+        "RecurEvery":  "1Week Friday",
+        "Description":  "Occurs every 1 week(s) on Friday"
+    },
+    {
+        "RecurEvery":  "1Week Saturday",
+        "Description":  "Occurs every 1 week(s) on Saturday"
+    },
+    {
+        "RecurEvery":  "2Weeks Sunday",
+        "Description":  "Occurs every 2 week(s) on Sunday"
+    },
+    {
+        "RecurEvery":  "2Weeks Monday",
+        "Description":  "Occurs every 2 week(s) on Monday"
+    },
+    {
+        "RecurEvery":  "2Weeks Tuesday",
+        "Description":  "Occurs every 2 week(s) on Tuesday"
+    },
+    {
+        "RecurEvery":  "2Weeks Wednesday",
+        "Description":  "Occurs every 2 week(s) on Wednesday"
+    },
+    {
+        "RecurEvery":  "2Weeks Thursday",
+        "Description":  "Occurs every 2 week(s) on Thursday"
+    },
+    {
+        "RecurEvery":  "2Weeks Friday",
+        "Description":  "Occurs every 2 week(s) on Friday"
+    },
+    {
+        "RecurEvery":  "2Weeks Saturday",
+        "Description":  "Occurs every 2 week(s) on Saturday"
+    },
+    {
+        "RecurEvery":  "3Weeks Sunday",
+        "Description":  "Occurs every 3 week(s) on Sunday"
+    },
+    {
+        "RecurEvery":  "3Weeks Monday",
+        "Description":  "Occurs every 3 week(s) on Monday"
+    },
+    {
+        "RecurEvery":  "3Weeks Tuesday",
+        "Description":  "Occurs every 3 week(s) on Tuesday"
+    },
+    {
+        "RecurEvery":  "3Weeks Wednesday",
+        "Description":  "Occurs every 3 week(s) on Wednesday"
+    },
+    {
+        "RecurEvery":  "3Weeks Thursday",
+        "Description":  "Occurs every 3 week(s) on Thursday"
+    },
+    {
+        "RecurEvery":  "3Weeks Friday",
+        "Description":  "Occurs every 3 week(s) on Friday"
+    },
+    {
+        "RecurEvery":  "3Weeks Saturday",
+        "Description":  "Occurs every 3 week(s) on Saturday"
+    },
+    {
+        "RecurEvery":  "4Weeks Sunday",
+        "Description":  "Occurs every 4 week(s) on Sunday"
+    },
+    {
+        "RecurEvery":  "4Weeks Monday",
+        "Description":  "Occurs every 4 week(s) on Monday"
+    },
+    {
+        "RecurEvery":  "4Weeks Tuesday",
+        "Description":  "Occurs every 4 week(s) on Tuesday"
+    },
+    {
+        "RecurEvery":  "4Weeks Wednesday",
+        "Description":  "Occurs every 4 week(s) on Wednesday"
+    },
+    {
+        "RecurEvery":  "4Weeks Thursday",
+        "Description":  "Occurs every 4 week(s) on Thursday"
+    },
+    {
+        "RecurEvery":  "4Weeks Friday",
+        "Description":  "Occurs every 4 week(s) on Friday"
+    },
+    {
+        "RecurEvery":  "4Weeks Saturday",
+        "Description":  "Occurs every 4 week(s) on Saturday"
+    }
+]
